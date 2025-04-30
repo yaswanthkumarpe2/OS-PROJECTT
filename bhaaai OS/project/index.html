@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPU Scheduling Simulator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>CPU Scheduling Simulator</h1>
+            <p class="intro">
+                
+            </p>
+        </header>
+
+        <section class="input-section" aria-label="Input controls for scheduling simulation">
+            <div class="error-message hidden" id="error-message" role="alert">
+                <span id="error-text"></span>
+                <button class="dismiss-error" aria-label="Dismiss error">×</button>
+            </div>
+            <div class="algorithm-selection">
+                <h2>Select Algorithm</h2>
+                <select id="algorithm" class="input-field" aria-label="Select scheduling algorithm">
+                    <option value="fcfs">First Come First Serve (FCFS)</option>
+                    <option value="sjf">Shortest Job First (SJF)</option>
+                    <option value="srtf">Shortest Remaining Time First (SRTF)</option>
+                    <option value="rr">Round Robin (RR)</option>
+                    <option value="priorityNonPreemptive">Priority Scheduling (Non-Preemptive)</option>
+                    <option value="priorityPreemptive">Priority Scheduling (Preemptive)</option>
+                </select>
+
+                <div id="quantum-input" class="hidden">
+                    <label for="time-quantum">Time Quantum:</label>
+                    <input type="number" id="time-quantum" class="input-field" min="1" step="1" value="2" aria-label="Time quantum for Round Robin">
+                </div>
+            </div>
+
+            <div class="process-input">
+                <h2>Process Input</h2>
+                <div class="process-count">
+                    <label for="process-count">Number of Processes:</label>
+                    <input type="number" id="process-count" class="input-field" min="1" max="10" step="1" value="3" aria-label="Number of processes (1 to 10)">
+                </div>
+                
+                <div class="process-table-container">
+                    <table id="process-table" aria-label="Process input table">
+                        <thead>
+                            <tr>
+                                <th>Process ID</th>
+                                <th>Arrival Time</th>
+                                <th>Burst Time</th>
+                                <th class="priority-column hidden">Priority</th>
+                            </tr>
+                        </thead>
+                        <tbody id="process-table-body">
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="loading-spinner hidden" id="loading-spinner" aria-live="polite">
+                    <span class="spinner"></span> Calculating...
+                </div>
+                <div class="button-group">
+                    <button id="example-button" class="button" aria-label="Load example data">Example</button>
+                    <button id="calculate" class="button" disabled aria-label="Calculate schedule">Calculate Schedule</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="results-section hidden" id="results" aria-label="Simulation results">
+            <h2>Results</h2>
+            
+            <div class="gantt-chart">
+                <h3>Gantt Chart</h3>
+                <div id="gantt-container" aria-label="Gantt chart of process execution"></div>
+                <div id="gantt-timeline" aria-label="Timeline markers"></div>
+            </div>
+
+            <div class="metrics">
+                <h3>Process Metrics</h3>
+                <table id="metrics-table" aria-label="Process metrics table">
+                    <thead>
+                        <tr>
+                            <th>Process ID</th>
+                            <th>Completion Time</th>
+                            <th>Turnaround Time</th>
+                            <th>Waiting Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="metrics-table-body">
+                    </tbody>
+                </table>
+
+                <div class="averages" id="averages">
+                    <h3>Average Metrics</h3>
+                    <table aria-label="Average metrics table">
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Average Completion Time</td>
+                                <td id="avg-ct">0</td>
+                            </tr>
+                            <tr>
+                                <td>Average Turnaround Time</td>
+                                <td id="avg-tat">0</td>
+                            </tr>
+                            <tr>
+                                <td>Average Waiting Time</td>
+                                <td id="avg-wt">0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="main.js" type="module"></script>
+</body>
+</html>

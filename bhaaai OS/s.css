@@ -1,0 +1,383 @@
+:root {
+    --primary-color: #eceff1; /* Off-white for headers/text */
+    --secondary-color: #00796b; /* Deep emerald for buttons/Gantt blocks */
+    --accent-color: #ffa726; /* Vibrant amber for highlights */
+    --background-color: #0a141f; /* Deep navy background */
+    --background-gradient: linear-gradient(135deg, #0a141f 0%, #1a2633 100%);
+    --text-color: #b0bec5; /* Light slate text */
+    --border-color: #455a64; /* Slate gray border */
+    --hover-color: #26c6da; /* Bright turquoise for hover */
+    --shadow-color: rgba(0, 0, 0, 0.7); /* Deep shadow */
+    --error-color: #e57373; /* Soft crimson for errors */
+    --table-bg: #1c2526; /* Dark charcoal table background */
+    --gantt-bg: #2e3b4e; /* Dark slate Gantt container */
+    --gantt-hover: #7e57c2; /* Rich purple for Gantt block hover */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.7;
+    color: var(--text-color);
+    background: var(--background-gradient);
+    font-size: 16px;
+}
+
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 3.5rem;
+    border-radius: 16px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 5rem;
+    animation: fadeIn 1s ease-in;
+}
+
+h1 {
+    color: var(--primary-color);
+    margin-bottom: 1.8rem;
+    font-size: 3.5rem;
+    font-weight: 900;
+    letter-spacing: 0.02em;
+}
+
+h2 {
+    color: var(--primary-color);
+    margin-bottom: 2.2rem;
+    font-size: 2.4rem;
+    font-weight: 800;
+}
+
+h3 {
+    color: var(--primary-color);
+    margin-bottom: 1.8rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.intro {
+    max-width: 950px;
+    margin: 0 auto;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    line-height: 2;
+    opacity: 0.9;
+}
+
+.input-section {
+    background: linear-gradient(145deg, var(--table-bg), #252f31);
+    padding: 3.5rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 20px var(--shadow-color);
+    margin-bottom: 4rem;
+    transition: transform 0.3s ease;
+}
+
+.input-section:hover {
+    transform: translateY(-3px);
+}
+
+.algorithm-selection {
+    margin-bottom: 3.5rem;
+}
+
+.input-field {
+    width: 100%;
+    padding: 1.3rem;
+    margin-bottom: 1.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 1.05rem;
+    background-color: #263238;
+    color: var(--text-color);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 4px rgba(0, 121, 107, 0.3);
+    transform: scale(1.02);
+}
+
+.process-table-container {
+    overflow-x: auto;
+    margin-bottom: 3rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 3rem;
+    background: var(--table-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+th, td {
+    padding: 1.6rem 2rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+}
+
+th {
+    background-color: #263238;
+    color: var(--accent-color);
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+    letter-spacing: 0.12em;
+}
+
+td {
+    background-color: var(--table-bg);
+    color: var(--text-color);
+}
+
+.button {
+    background: linear-gradient(135deg, var(--secondary-color), #004d40);
+    color: var(--primary-color);
+    padding: 1.3rem 3rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 12px rgba(0, 121, 107, 0.4);
+}
+
+.button:hover {
+    background: var(--hover-color);
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(38, 198, 218, 0.5);
+}
+
+.button:disabled {
+    background: #546e7a;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.error-message {
+    background-color: var(--error-color);
+    color: var(--primary-color);
+    padding: 1.3rem;
+    border-radius: 10px;
+    margin-bottom: 2.5rem;
+    text-align: center;
+    font-weight: 600;
+    border: 1px solid #b71c1c;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.5s ease;
+}
+
+.results-section {
+    background: linear-gradient(145deg, var(--table-bg), #252f31);
+    padding: 3.5rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 20px var(--shadow-color);
+    margin-bottom: 4rem;
+    animation: slideUp 0.6s ease-out;
+    transition: transform 0.3s ease;
+}
+
+.results-section:hover {
+    transform: translateY(-3px);
+}
+
+.gantt-chart {
+    margin-bottom: 4rem;
+    overflow-x: auto;
+    max-width: 100%;
+    background: var(--gantt-bg);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: inset 0 3px 8px var(--shadow-color);
+}
+
+#gantt-container {
+    display: flex;
+    margin-bottom: 2rem;
+    min-height: 140px; /* Larger Gantt chart for presentation */
+    flex-wrap: nowrap;
+    position: relative;
+}
+
+.gantt-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--secondary-color), #004d40);
+    color: var(--primary-color);
+    margin-right: 8px;
+    padding: 1.3rem;
+    min-width: 60px;
+    flex-shrink: 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.gantt-block:hover {
+    background: var(--gantt-hover);
+    transform: scale(1.08);
+    box-shadow: 0 6px 12px rgba(126, 87, 194, 0.5);
+}
+
+.gantt-block::after {
+    content: attr(aria-label);
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #263238;
+    color: var(--text-color);
+    padding: 0.8rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.gantt-block:hover::after {
+    opacity: 1;
+}
+
+#gantt-timeline {
+    display: flex;
+    font-size: 1.2rem;
+    color: var(--text-color);
+    padding-left: 8px;
+}
+
+.timeline-mark {
+    text-align: left;
+    flex-shrink: 0;
+    padding-right: 8px;
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+.averages {
+    background: #263238;
+    padding: 2.5rem;
+    border-radius: 12px;
+    margin-top: 3rem;
+    box-shadow: 0 6px 12px var(--shadow-color);
+}
+
+.averages table {
+    width: 100%;
+    background: var(--table-bg);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.averages th {
+    background-color: #263238;
+    color: var(--accent-color);
+    font-weight: 800;
+}
+
+.averages td {
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 2.5rem;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    h2 {
+        font-size: 2.2rem;
+    }
+
+    h3 {
+        font-size: 1.6rem;
+    }
+
+    .input-section, .results-section {
+        padding: 2.5rem;
+    }
+
+    th, td {
+        padding: 1.3rem;
+        font-size: 0.95rem;
+    }
+
+    .gantt-chart {
+        padding: 2rem;
+    }
+
+    .gantt-block {
+        font-size: 1.2rem;
+        padding: 1rem;
+        min-width: 40px;
+    }
+
+    .timeline-mark {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 1.5rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .button {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+    }
+}
